@@ -1,15 +1,16 @@
 name: tana_kala
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   easy_search_bar: ^2.5.0
   flutter_svg: ^2.0.6
   smooth_page_indicator: ^1.1.0
+  flutter_localization: ^0.1.11
   flutter:
     sdk: flutter
 
@@ -23,7 +24,7 @@ flutter:
     - assets/
   fonts:
     - family: Peyda
-      fonts: 
+      fonts:
         - asset: fonts/Peyda-Regular.ttf
           weight: 400
         - asset: fonts/Peyda-Bold.ttf

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tana_kala/pages/home_page.dart';
+import 'package:tana_kala/theme/theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +14,8 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'تانا کالا',
-        theme: ThemeData(primaryColor: Color(0xE7A283)),
-        home: HomePage());
+        locale: Locale('fa', 'IR'),
+        theme: appTheme(),
+        home: const HomePage());
   }
 }

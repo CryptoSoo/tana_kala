@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tana_kala/theme/colors.dart';
 
 import '../models/models.dart';
 
@@ -41,25 +42,25 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
-                          Text(
+                          const Text(
                             'زمستون تو راهه ...',
                             style: TextStyle(fontSize: 24, color: Colors.white),
                             textDirection: TextDirection.rtl,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             '''تمامی لباس های که برای زمستان نیاز دارید را از
                               تانا کالا بیابید''',
                             style: TextStyle(fontSize: 10, color: Colors.white),
                             maxLines: 2,
                             textAlign: TextAlign.right,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Image.asset(
@@ -104,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                   physics: const BouncingScrollPhysics(),
                   reverse: true,
                   scrollDirection: Axis.horizontal,
-                  children: [
+                  children: const [
                     FavList(
                       image: 'assets/image_1380.png',
                       text: 'لباس زنانه',
@@ -151,7 +152,241 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 16, 16),
-              child: AspectRatio(aspectRatio: 9.16, child: ListView()),
+              child: Container(
+                  height: 286,
+                  width: double.infinity,
+                  child: ListView(
+                    reverse: true,
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Stack(
+                            children: [
+                              Positioned(
+                                right: 0,
+                                child: Container(
+                                  color: const Color(0x586488),
+                                  height: 23,
+                                  width: 46,
+                                  child: const Text('تک سایز'),
+                                ),
+                              ),
+                              Container(
+                                color: AppColors.bgStroke,
+                                height: 162,
+                                width: 166,
+                              ),
+                              Image.asset('assets/image_16.png'),
+                            ],
+                          ),
+                          const Row(
+                            children: [
+                              Text('پیراهن پسرانه پیانو مدل 7109-93'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Image.asset('assets/toman.png'),
+                              const Text('۲,۲۶۳,۰۰۰')
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text('(۲ نظر)'),
+                              const Text('۴.۸ '),
+                              Image.asset('assets/Star.png')
+                            ],
+                          ),
+                          const Divider(
+                            color: Colors.black,
+                          ),
+                          const Row(
+                            children: [
+                              Text('فروشگاه اصلی ترناو'),
+                              Text('فروشنده : ')
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Stack(
+                            children: [
+                              Positioned(
+                                right: 0,
+                                child: Container(
+                                  color: const Color(0x586488),
+                                  height: 23,
+                                  width: 46,
+                                  child: const Text('تک سایز'),
+                                ),
+                              ),
+                              Container(
+                                color: AppColors.bgStroke,
+                                height: 162,
+                                width: 166,
+                              ),
+                              Image.asset('assets/image_18.png'),
+                            ],
+                          ),
+                          const Row(
+                            children: [
+                              Text('پیراهن پسرانه پیانو مدل 7109-93'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Image.asset('assets/toman.png'),
+                              const Text('۲,۲۶۳,۰۰۰')
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text('(۲ نظر)'),
+                              const Text('۴.۸ '),
+                              Image.asset('assets/Star.png')
+                            ],
+                          ),
+                          const Divider(
+                            color: Colors.black,
+                          ),
+                          const Row(
+                            children: [
+                              Text('فروشگاه اصلی ترناو'),
+                              Text('فروشنده : ')
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Stack(
+                            children: [
+                              Positioned(
+                                right: 0,
+                                child: Container(
+                                  color: const Color(0x586488),
+                                  height: 23,
+                                  width: 46,
+                                  child: const Text('تک سایز'),
+                                ),
+                              ),
+                              Container(
+                                color: AppColors.bgStroke,
+                                height: 162,
+                                width: 166,
+                              ),
+                              Image.asset('assets/image_16.png'),
+                            ],
+                          ),
+                          const Row(
+                            children: [
+                              Text('پیراهن پسرانه پیانو مدل 7109-93'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Image.asset('assets/toman.png'),
+                              const Text('۲,۲۶۳,۰۰۰')
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text('(۲ نظر)'),
+                              const Text('۴.۸ '),
+                              Image.asset('assets/Star.png')
+                            ],
+                          ),
+                          const Divider(
+                            color: Colors.black,
+                          ),
+                          const Row(
+                            children: [
+                              Text('فروشگاه اصلی ترناو'),
+                              Text('فروشنده : ')
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Stack(
+                            children: [
+                              Positioned(
+                                right: 0,
+                                child: Container(
+                                  color: const Color(0x586488),
+                                  height: 23,
+                                  width: 46,
+                                  child: const Text('تک سایز'),
+                                ),
+                              ),
+                              Container(
+                                color: AppColors.bgStroke,
+                                height: 162,
+                                width: 166,
+                              ),
+                              Image.asset('assets/image_18.png'),
+                            ],
+                          ),
+                          const Row(
+                            children: [
+                              Text('پیراهن پسرانه پیانو مدل 7109-93'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Image.asset('assets/toman.png'),
+                              const Text('۲,۲۶۳,۰۰۰')
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text('(۲ نظر)'),
+                              const Text('۴.۸ '),
+                              Image.asset('assets/Star.png')
+                            ],
+                          ),
+                          const Divider(
+                            color: Colors.black,
+                          ),
+                          const Row(
+                            children: [
+                              Text('فروشگاه اصلی ترناو'),
+                              Text('فروشنده : ')
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  )),
+            ),
+            AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Image.asset('assets/image1378.png'),
+            ),
+            const Row(
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.arrow_back),
+                    Text('مشاهده تمامی برند های محبوب'),
+                  ],
+                ),
+                Row(
+                  children: [Text('برند های محبوب تانا کالا')],
+                )
+              ],
             )
           ],
         ),

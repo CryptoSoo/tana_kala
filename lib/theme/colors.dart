@@ -7,4 +7,5 @@ class AppColors {
   static const Color secondaryTextColor2 = Color(0x8F9ABA);
   static const Color disabledTextColor = Color(0xBFC4D5);
   static const Color styleColor = Color(0xFFBE18);
+  static const Color bgStroke = Color(0xF7FAFC);
 }

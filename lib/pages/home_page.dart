@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 16, 8),
               child: Container(
-                color: const Color(0xF7FAFC),
+                color: const Color(0x00f7fafc),
                 height: 103,
                 width: double.infinity,
                 child: ListView(
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 8, 16),
               child: AspectRatio(
-                aspectRatio: 2,
+                aspectRatio: 1.5,
                 child: ListView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,
@@ -231,8 +231,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
               child: AspectRatio(
-                aspectRatio: 2,
-                child: ListView(
+                aspectRatio: 2,                child: ListView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
@@ -270,11 +269,11 @@ class _HomePageState extends State<HomePage> {
               subTitle: 'بر اساس بازدید های اخیر شما',
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 8, 16, 8),
+              padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
               child: AspectRatio(
-                aspectRatio: 2,
+                aspectRatio: 1.5,
                 child: ListView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   reverse: true,
                   children: const [
@@ -312,11 +311,11 @@ class _HomePageState extends State<HomePage> {
               subTitle: 'بر اساس بازدید های اخیر شما',
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 8, 16, 8),
+              padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
               child: AspectRatio(
-                aspectRatio: 2,
+                aspectRatio: 1.5,
                 child: ListView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   reverse: true,
                   children: const [
@@ -358,16 +357,16 @@ class _HomePageState extends State<HomePage> {
                 ))
               ],
             ),
-            ProductsTitle(
+            const ProductsTitle(
                 title: 'منتخب محصولات تانا کالا', viewAll: 'مشاهده همه'),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 8, 16, 8),
+              padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
               child: AspectRatio(
-                  aspectRatio: 16 / 9,
+                  aspectRatio: 1.5,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     reverse: true,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     children: const [
                       ClothCategory(
                           image: 'assets/image_16.png',
@@ -392,13 +391,20 @@ class _HomePageState extends State<HomePage> {
                     ],
                   )),
             ),
-            
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
-      //   BottomNavigationBarItem(icon: Image.asset('assets/Search.png'),label: 'Search'),
-      //   BottomNavigationBarItem(icon: Image.asset('assets/User_Empty.png'),label: 'profile')] ),
+      bottomNavigationBar:
+          BottomNavigationBar(currentIndex: 3, items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+            icon: Image.asset('assets/User_Empty.png'), label: ''),
+        BottomNavigationBarItem(
+            icon: Image.asset('assets/Shopping_Bag.png'), label: ''),
+        BottomNavigationBarItem(
+            icon: Image.asset('assets/Search.png'), label: ''),
+        BottomNavigationBarItem(
+            icon: Image.asset('assets/Home_Empty.png'), label: 'صفحه اصلی'),
+      ]),
     );
   }
 }

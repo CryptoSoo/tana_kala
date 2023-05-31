@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'تانا کالا',
-        locale: Locale('fa', 'IR'),
+        locale: const Locale('fa', 'IR'),
         theme: appTheme(),
         home: const HomePage());
   }

@@ -45,7 +45,7 @@ class ClothCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Stack(
@@ -54,7 +54,7 @@ class ClothCategory extends StatelessWidget {
               Positioned(
                 right: 0,
                 child: Container(
-                  color: const Color(0x586488),
+                  color: const Color(0x00586488),
                   height: 23,
                   width: 46,
                   child: Text(size!),
@@ -69,21 +69,22 @@ class ClothCategory extends StatelessWidget {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(productName),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          
           children: [Image.asset('assets/toman.png'), Text(price)],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Text('(۲ نظر)'),
+            Image.asset('assets/Star.png'),
+            
             const Text('۴.۸ '),
-            Image.asset('assets/Star.png')
+            const Text('(۲ نظر)'),
+            
           ],
         ),
         const Divider(

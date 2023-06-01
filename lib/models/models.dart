@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tana_kala/theme/colors.dart';
 
 class FavList extends StatelessWidget {
   final String text;
@@ -31,70 +30,74 @@ class ClothCategory extends StatelessWidget {
   final String image;
   final String productName;
   final String price;
-  final String store;
+  final String? store;
 
   const ClothCategory({
     this.size,
     required this.image,
     required this.productName,
     required this.price,
-    required this.store,
+    this.store,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Stack(
-          children: [
-            if (size != null)
-              Positioned(
-                right: 0,
-                child: Container(
-                  color: const Color(0x00586488),
-                  height: 23,
-                  width: 46,
-                  child: Text(size!),
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+
+      child: Padding(
+        padding: const EdgeInsets.all(4),
+        child: AspectRatio(
+          aspectRatio: 0.7,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AspectRatio(
+                aspectRatio: 1.5,
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    if (size != null)
+                      Positioned(
+                        right: 0,
+                        top: 0,
+                        child: Text(size!),
+                      ),
+                  
+                    Positioned.fill(child: Image.asset(image,fit: BoxFit.contain,),)
+                  ],
                 ),
               ),
-            Container(
-              color: AppColors.bgStroke,
-              height: 162,
-              width: 166,
+              const Spacer(),
+              Text(productName,maxLines: 2,overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodySmall,textDirection: TextDirection.rtl,),
+           
+              Row(
+                children: [Image.asset('assets/toman.png'), Expanded(child: Text(price,overflow: TextOverflow.ellipsis,))],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset('assets/Star.png'),
+                  const Text('۴.۸ '),
+                  const Text('(۲ نظر)'),
+                ],
+              ),
+            const Divider(
+              indent: 10,
+              endIndent: 10,
             ),
-            Image.asset(image),
-          ],
+              if (store != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [Flexible(child: Text(store!,maxLines: 1,textDirection: TextDirection.rtl,)), const Text(':فروشنده')],
+                )
+            ],
+          ),
         ),
-        Row(
-          children: [
-            Text(productName),
-          ],
-        ),
-        Row(
-          
-          children: [Image.asset('assets/toman.png'), Text(price)],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Image.asset('assets/Star.png'),
-            
-            const Text('۴.۸ '),
-            const Text('(۲ نظر)'),
-            
-          ],
-        ),
-        const Divider(
-          color: Colors.black,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [Text(store), const Text(':فروشنده')],
-        )
-      ],
+      ),
     );
   }
 }
@@ -206,5 +209,27 @@ class BestStores extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class SellerDetails extends StatelessWidget {
+
+  
+  final String text;
+  final String image;
+  const SellerDetails({
+    super.key, required this.text, required this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+      Text(text),
+      SizedBox(width: 10,),
+      Image.asset(image)
+    ],),);
   }
 }

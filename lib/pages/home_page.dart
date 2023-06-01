@@ -21,12 +21,13 @@ class _HomePageState extends State<HomePage> {
           child: const SearchBar(
             elevation: MaterialStatePropertyAll(0),
             leading: Text(
-              'جستجو در تاناکالا',
+              'جستجو در تاناکالا'
             ),
           ),
         ),
       ),
       body: SingleChildScrollView(
+        
         physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics()),
         child: Column(
@@ -122,7 +123,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 8, 16),
               child: AspectRatio(
-                aspectRatio: 1.5,
+                aspectRatio:16/9,
                 child: ListView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,

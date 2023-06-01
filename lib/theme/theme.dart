@@ -5,7 +5,9 @@ ThemeData appTheme() {
   return ThemeData(
       
       fontFamily: 'Peyda',
-      textTheme: const TextTheme(),
+      textTheme: const TextTheme(
+        // titleMedium: TextStyle(fontSize: 16,fontWeight: FontWeight.w700)
+      ),
       appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white, elevation: 0, toolbarHeight: 70),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(

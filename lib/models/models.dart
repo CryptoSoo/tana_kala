@@ -223,12 +223,12 @@ class SellerDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+    return Padding(padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
       Text(text),
-      SizedBox(width: 10,),
+      const SizedBox(width: 10,),
       Image.asset(image)
     ],),);
   }

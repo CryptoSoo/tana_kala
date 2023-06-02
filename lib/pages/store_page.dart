@@ -136,7 +136,7 @@ class StorePage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               height: 800,
               child: GridView(
                 gridDelegate:

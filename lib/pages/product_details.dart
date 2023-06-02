@@ -40,7 +40,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
         centerTitle: true,
         leading: const Icon(Icons.favorite_border, color: Colors.black),
-        actions: [const Icon(Icons.arrow_forward_sharp, color: Colors.black)],
+        actions: const [Icon(Icons.arrow_forward_sharp, color: Colors.black)],
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -343,15 +343,147 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             const SellerDetails(
                 text: 'دیدگاه کاربران', image: 'assets/check.png'),
-                
             const UserFeedBack(
               color: Colors.red,
               feedBack: 'خرید این محصول را پیشنهاد نمیکنم',
-              likeOrDisLike: 'assets/Dislike.png',rate: 'assets/red_one.png',
+              likeOrDisLike: 'assets/Dislike.png',
+              rate: 'assets/red_one.png',
               title: 'راضی نبودم',
-
             ),
-            UserFeedBack(title: 'فوق الاده خوش فرم و راحت', rate: 'assets/green_five.png', feedBack: 'خرید این محصول را پیشنهاد نمیکنم', likeOrDisLike: 'assets/Like.png', color: Colors.green)
+            const UserFeedBack(
+                title: 'فوق الاده خوش فرم و راحت',
+                rate: 'assets/green_five.png',
+                feedBack: 'خرید این محصول را پیشنهاد نمیکنم',
+                likeOrDisLike: 'assets/Like.png',
+                color: Colors.green),
+            const Divider(
+              endIndent: 16,
+              indent: 16,
+            ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 4, 16, 4),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.chevron_left),
+                  SellerDetails(
+                      text: 'ثبت دیدگاه', image: 'assets/Chat_Circle_Add.png'),
+                ],
+              ),
+            ),
+            const Divider(
+              thickness: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 4, 16, 4),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.chevron_left),
+                  SellerDetails(
+                      text: 'پرسش و پاسخ', image: 'assets/Chat_Chats.png'),
+                ],
+              ),
+            ),
+            const Divider(
+              thickness: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 8, 24, 8),
+              child: Text('محصولات مشابه'),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 16, 8, 16),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: ListView(
+                  reverse: true,
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  children: const [
+                    ClothCategory(
+                      image: 'assets/image_16.png',
+                      price: '۲,۲۶۳,۰۰۰',
+                      productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+                      size: 'تک سایز',
+                      store: 'فروشگاه اصلی ترناو',
+                    ),
+                    ClothCategory(
+                      image: 'assets/image_18.png',
+                      price: '۲,۲۶۳,۰۰۰',
+                      productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+                      size: 'تک سایز',
+                      store: 'فروشگاه اصلی ترناو',
+                    ),
+                    ClothCategory(
+                      image: 'assets/image_16.png',
+                      price: '۲,۲۶۳,۰۰۰',
+                      productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+                      size: 'تک سایز',
+                      store: 'فروشگاه اصلی ترناو',
+                    ),
+                    ClothCategory(
+                      image: 'assets/image_18.png',
+                      price: '۲,۲۶۳,۰۰۰',
+                      productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+                      size: 'تک سایز',
+                      store: 'فروشگاه اصلی ترناو',
+                    ),
+                    ClothCategory(
+                      image: 'assets/image_16.png',
+                      price: '۲,۲۶۳,۰۰۰',
+                      productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+                      size: 'تک سایز',
+                      store: 'فروشگاه اصلی ترناو',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            BottomAppBar(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Row(
+                            children: [Image.asset('assets/2.263.000.png')],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Row(
+                            children: [
+                              Image.asset('assets/toman.png'),
+                              const Text('2.263.000'),
+                              Image.asset('assets/Group33499.png')
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(
+                        style: const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColors.primaryColor)
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            const Text('افزودن به سبد خرید'),
+                            Image.asset('assets/Shopping_Cart_Add.png')
+                          ],
+                        )),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -457,8 +589,8 @@ class UserFeedBack extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 8),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [

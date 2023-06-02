@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tana_kala/pages/home_page.dart';
-import 'package:tana_kala/pages/product_details.dart';
-import 'package:tana_kala/pages/store_page.dart';
 import 'package:tana_kala/theme/theme.dart';
 
 void main() {
@@ -18,6 +16,6 @@ class MainApp extends StatelessWidget {
         title: 'تانا کالا',
         locale: const Locale('fa', 'IR'),
         theme: appTheme(),
-        home:  ProductDetails());
+        home:  const HomePage());
   }
 }

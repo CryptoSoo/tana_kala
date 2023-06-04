@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tana_kala/models/models.dart';
+import 'package:tana_kala/pages/store_page.dart';
 import 'package:tana_kala/theme/colors.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -40,7 +41,13 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
         centerTitle: true,
         leading: const Icon(Icons.favorite_border, color: Colors.black),
-        actions: const [Icon(Icons.arrow_forward_sharp, color: Colors.black)],
+        actions:  [IconButton(
+          onPressed: () {
+
+            Navigator.push(context, MaterialPageRoute(builder: (context) => StorePage(),));
+          },
+          icon: Icon(Icons.arrow_forward_sharp,color: Colors.black,),
+          )],
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -81,7 +88,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             const Padding(
                 padding: EdgeInsets.all(16),
-                child: Text('لباس مردانه / پیراهن پسرانه')),
+                child: Text('لباس مردانه / پیراهن پسرانه',style: TextStyle(color: AppColors.secondaryTextColor2))),
             const Padding(
                 padding: EdgeInsets.all(16),
                 child: Text('پیراهن پسرانه پیانو مدل 7109-93')),
@@ -93,7 +100,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     flex: 1,
                   ),
                   const Text(
-                      '۷۷% (۳۰) نفر از خریداران این کالا را پیشنهاد کرده اند'),
+                      '۷۷% (۳۰) نفر از خریداران این کالا را پیشنهاد کرده اند',style: TextStyle(color: AppColors.secondaryTextColor2)),
                   Image.asset('assets/Like.png'),
                   const Spacer(
                     flex: 2,
@@ -102,7 +109,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const Spacer(
                     flex: 2,
                   ),
-                  const Text('۶ دیدگاه')
+                  const Text('۶ دیدگاه',style: TextStyle(color: Colors.blue),)
                 ],
               ),
             ),
@@ -234,7 +241,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Text(
                 'سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.',
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.rtl,style: TextStyle(color: AppColors.secondaryTextColor2)
               ),
             ),
             const Divider(
@@ -254,7 +261,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('جنس'),
+                  Text('جنس',style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -274,7 +281,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('طرح'),
+                  Text('طرح',style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -294,7 +301,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('استایل لباس'),
+                  Text('استایل لباس',style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -314,7 +321,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('نوع فاق'),
+                  Text('نوع فاق',style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -334,7 +341,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('نحوه بسته شدن'),
+                  Text('نحوه بسته شدن',style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -343,19 +350,32 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             const SellerDetails(
                 text: 'دیدگاه کاربران', image: 'assets/check.png'),
-            const UserFeedBack(
-              color: Colors.red,
-              feedBack: 'خرید این محصول را پیشنهاد نمیکنم',
-              likeOrDisLike: 'assets/Dislike.png',
-              rate: 'assets/red_one.png',
-              title: 'راضی نبودم',
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: ListView(
+                  reverse: true,
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  children: const [
+                    UserFeedBack(
+                      color: Colors.red,
+                      feedBack: 'خرید این محصول را پیشنهاد نمیکنم',
+                      likeOrDisLike: 'assets/Dislike.png',
+                      rate: 'assets/red_one.png',
+                      title: 'راضی نبودم',
+                    ),
+                    UserFeedBack(
+                        title: 'فوق الاده خوش فرم و راحت',
+                        rate: 'assets/green_five.png',
+                        feedBack: 'خرید این محصول را پیشنهاد نمیکنم',
+                        likeOrDisLike: 'assets/Like.png',
+                        color: Colors.green),
+                  ],
+                ),
+              ),
             ),
-            const UserFeedBack(
-                title: 'فوق الاده خوش فرم و راحت',
-                rate: 'assets/green_five.png',
-                feedBack: 'خرید این محصول را پیشنهاد نمیکنم',
-                likeOrDisLike: 'assets/Like.png',
-                color: Colors.green),
             const Divider(
               endIndent: 16,
               indent: 16,
@@ -470,9 +490,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     ElevatedButton(
                         style: const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColors.primaryColor)
-                        ),
+                            backgroundColor: MaterialStatePropertyAll(
+                                AppColors.primaryColor)),
                         onPressed: () {},
                         child: Row(
                           children: [
@@ -487,126 +506,6 @@ class _ProductDetailsState extends State<ProductDetails> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class UserFeedBack extends StatelessWidget {
-  final String title;
-  final String rate;
-  final String feedBack;
-  final String likeOrDisLike;
-  final Color color;
-
-  const UserFeedBack({
-    super.key,
-    required this.title,
-    required this.rate,
-    required this.feedBack,
-    required this.likeOrDisLike,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
-      child: AspectRatio(
-          aspectRatio: 16 / 9,
-          child: ListView(
-              reverse: true,
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              children: [
-                AspectRatio(
-                  aspectRatio: 1.5,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border:
-                            Border.all(width: 1, color: Colors.grey.shade200)),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8),
-                          child: Row(
-                            children: [
-                              const Text('۲۲ تیر ۱۴۰۱'),
-                              const Spacer(),
-                              Text(title),
-                              Image.asset(rate)
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                  padding: const EdgeInsets.all(5),
-                                  color: Colors.grey.shade200,
-                                  child: const Text('خریدار')),
-                              const Text('علیرضا رودی')
-                            ],
-                          ),
-                        ),
-                        const Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'چیزی تو عکس بود نبود واقعا کمر اندازه ولی مابقیش خعلی گشاد',
-                                maxLines: 2,
-                                textScaleFactor: 0.7,
-                              ),
-                            ],
-                          ),
-                        ),
-                        const Divider(
-                          endIndent: 16,
-                          indent: 16,
-                        ),
-                        const Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Spacer(
-                                flex: 3,
-                              ),
-                              Text('سایز: ۳۴'),
-                              Spacer(
-                                flex: 1,
-                              ),
-                              Text('فروشنده: فروشگاه پنو'),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                feedBack,
-                                style: TextStyle(color: color),
-                              ),
-                              Image.asset(likeOrDisLike)
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ])),
     );
   }
 }

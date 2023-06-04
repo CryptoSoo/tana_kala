@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tana_kala/theme/colors.dart';
 
 class FavList extends StatelessWidget {
   final String text;
@@ -45,7 +46,6 @@ class ClothCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 5),
-
       child: Padding(
         padding: const EdgeInsets.all(4),
         child: AspectRatio(
@@ -53,7 +53,7 @@ class ClothCategory extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+            // mainAxisSize: MainAxisSize.min,
             children: [
               AspectRatio(
                 aspectRatio: 1.5,
@@ -64,18 +64,35 @@ class ClothCategory extends StatelessWidget {
                       Positioned(
                         right: 0,
                         top: 0,
-                        child: Text(size!),
+                        child: Container(
+                            color: const Color(0xDEE2EE), child: Text(size!)),
                       ),
-                  
-                    Positioned.fill(child: Image.asset(image,fit: BoxFit.contain,),)
+                    Positioned.fill(
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.contain,
+                      ),
+                    )
                   ],
                 ),
               ),
-              const Spacer(),
-              Text(productName,maxLines: 2,overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodySmall,textDirection: TextDirection.rtl,),
-           
+              // const Spacer(),
+              Text(
+                productName,
+                // maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodySmall,
+                textDirection: TextDirection.rtl,
+              ),
               Row(
-                children: [Image.asset('assets/toman.png'), Expanded(child: Text(price,overflow: TextOverflow.ellipsis,))],
+                children: [
+                  Image.asset('assets/toman.png'),
+                  Expanded(
+                      child: Text(
+                    price,
+                    overflow: TextOverflow.ellipsis,
+                  ))
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -85,14 +102,26 @@ class ClothCategory extends StatelessWidget {
                   const Text('(۲ نظر)'),
                 ],
               ),
-            const Divider(
-              indent: 10,
-              endIndent: 10,
-            ),
+              if(store != null) const Divider(
+                indent: 10,
+                endIndent: 10,
+              ),
               if (store != null)
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [Flexible(child: Text(store!,maxLines: 1,textDirection: TextDirection.rtl,)), const Text(':فروشنده')],
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Flexible(
+                        child: Text(
+                      store!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textDirection: TextDirection.rtl,
+                    )),
+                    const Text(
+                      ':فروشنده',
+                      style: TextStyle(color: AppColors.secondaryTextColor2),
+                    )
+                  ],
                 )
             ],
           ),
@@ -134,14 +163,22 @@ class ProductsTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(Icons.arrow_back_sharp),
+          const Icon(
+            Icons.arrow_back_sharp,
+            color: AppColors.secondaryTextColor2,
+          ),
           Row(
             children: [
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(viewAll),
+                child: Text(
+                  viewAll,
+                  style: const TextStyle(
+                      fontSize: 10, color: AppColors.secondaryTextColor2),
+                ),
               )
             ],
           ),
@@ -152,10 +189,12 @@ class ProductsTitle extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 22),
                 ),
                 if (subTitle != null)
-                  Text(subTitle!, style: const TextStyle(fontSize: 12))
+                  Text(subTitle!,
+                      style: const TextStyle(
+                          fontSize: 12, color: AppColors.secondaryTextColor2))
               ],
             ),
           ),
@@ -187,12 +226,12 @@ class BestStores extends StatelessWidget {
           aspectRatio: 1,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Image.asset(storeImage),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset('assets/Frame33540.png'),
                   Row(
@@ -203,7 +242,10 @@ class BestStores extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(storeCategory),
+              Text(storeCategory,
+                  style: const TextStyle(
+                      color: AppColors.secondaryTextColor2, fontSize: 12),
+                  textDirection: TextDirection.rtl),
             ],
           ),
         ),
@@ -213,23 +255,132 @@ class BestStores extends StatelessWidget {
 }
 
 class SellerDetails extends StatelessWidget {
-
-  
   final String text;
   final String image;
   const SellerDetails({
-    super.key, required this.text, required this.image,
+    super.key,
+    required this.text,
+    required this.image,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-      Text(text),
-      const SizedBox(width: 10,),
-      Image.asset(image)
-    ],),);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(text),
+          const SizedBox(
+            width: 10,
+          ),
+          Image.asset(image)
+        ],
+      ),
+    );
+  }
+}
+
+class UserFeedBack extends StatelessWidget {
+  final String title;
+  final String rate;
+  final String feedBack;
+  final String likeOrDisLike;
+  final Color color;
+
+  const UserFeedBack({
+    super.key,
+    required this.title,
+    required this.rate,
+    required this.feedBack,
+    required this.likeOrDisLike,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 1.5,
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(width: 1, color: Colors.grey.shade200)),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                children: [
+                  const Text('۲۲ تیر ۱۴۰۱',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  const Spacer(),
+                  Text(title),
+                  Image.asset(rate)
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                      padding: const EdgeInsets.all(5),
+                      color: Colors.grey.shade200,
+                      child: const Text('خریدار',style: TextStyle(color: AppColors.secondaryTextColor2))),
+                  const Text('علیرضا رودی',style: TextStyle(color: AppColors.secondaryTextColor2))
+                ],
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'چیزی تو عکس بود نبود واقعا کمر اندازه ولی مابقیش خعلی گشاد',
+                    maxLines: 2,
+                    textScaleFactor: 0.7,
+                    style: TextStyle(color: AppColors.secondaryTextColor)
+                  ),
+                ],
+              ),
+            ),
+            const Divider(
+              endIndent: 16,
+              indent: 16,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Spacer(
+                    flex: 3,
+                  ),
+                  Text('سایز: ۳۴',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Spacer(
+                    flex: 1,
+                  ),
+                  Text('فروشنده: فروشگاه پنو',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    feedBack,
+                    style: TextStyle(color: color),
+                  ),
+                  Image.asset(likeOrDisLike)
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

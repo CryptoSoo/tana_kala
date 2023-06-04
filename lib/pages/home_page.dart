@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tana_kala/theme/colors.dart';
 
 import '../models/models.dart';
 
@@ -15,19 +16,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: const SearchBar(
-            elevation: MaterialStatePropertyAll(0),
-            leading: Text(
-              'جستجو در تاناکالا'
-            ),
-          ),
+        title: const SearchBar(
+          backgroundColor: MaterialStatePropertyAll(AppColors.bgStroke),
+          elevation: MaterialStatePropertyAll(0.5),
+          padding: MaterialStatePropertyAll(EdgeInsets.fromLTRB(16, 4, 16, 4)),
+          constraints: BoxConstraints(),
+          // elevation: MaterialStatePropertyAll(0),
+          hintText: 'جستجو در تاناکالا',
         ),
       ),
       body: SingleChildScrollView(
-        
         physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics()),
         child: Column(
@@ -36,48 +36,53 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(16),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Container(
-                  height: 210,
-                  color: const Color.fromRGBO(55, 166, 216, 100),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        textDirection: TextDirection.rtl,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          const Text(
-                            'زمستون تو راهه ...',
-                            style: TextStyle(fontSize: 24, color: Colors.white),
-                            textDirection: TextDirection.rtl,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            '''تمامی لباس های که برای زمستان نیاز دارید را از
-                              تانا کالا بیابید''',
-                            style: TextStyle(fontSize: 10, color: Colors.white),
-                            maxLines: 2,
-                            textAlign: TextAlign.right,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Image.asset(
-                            'assets/Group_4.png',
-                          )
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Image.asset('assets/image_15.png')],
-                      ),
-                    ],
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Container(
+                    // height: 210,
+                    color: const Color.fromRGBO(55, 166, 216, 100),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
+                          textDirection: TextDirection.rtl,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            const Text(
+                              'زمستون تو راهه ...',
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.white),
+                              textDirection: TextDirection.rtl,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text(
+                              '''تمامی لباس های که برای زمستان نیاز دارید را از
+                                تانا کالا بیابید''',
+                              style:
+                                  TextStyle(fontSize: 10, color: Colors.white),
+                              maxLines: 2,
+                              textAlign: TextAlign.right,
+                            ),
+                           
+                            Spacer(),
+                            Image.asset(
+                              'assets/Group_4.png',
+                            ),
+                            Spacer()
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Image.asset('assets/image_15.png')],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -90,9 +95,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 16, 8),
               child: Container(
-                color: const Color(0x00f7fafc),
-                height: 103,
-                width: double.infinity,
+                height: kBottomNavigationBarHeight,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   reverse: true,
@@ -123,7 +126,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 8, 16),
               child: AspectRatio(
-                aspectRatio:16/9,
+                aspectRatio: 16 / 9,
                 child: ListView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,
@@ -168,9 +171,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image.asset('assets/image1378.png'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Image.asset('assets/image1378.png'),
+              ),
             ),
             const ProductsTitle(
               title: 'برند های محبوب تانا کالا',
@@ -232,7 +238,8 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
               child: AspectRatio(
-                aspectRatio: 2,                child: ListView(
+                aspectRatio: 2,
+                child: ListView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
@@ -270,9 +277,9 @@ class _HomePageState extends State<HomePage> {
               subTitle: 'بر اساس بازدید های اخیر شما',
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
+              padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
               child: AspectRatio(
-                aspectRatio: 1.5,
+                aspectRatio: 16/9,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -312,9 +319,9 @@ class _HomePageState extends State<HomePage> {
               subTitle: 'بر اساس بازدید های اخیر شما',
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
+              padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
               child: AspectRatio(
-                aspectRatio: 1.5,
+                aspectRatio: 16/9,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -361,9 +368,9 @@ class _HomePageState extends State<HomePage> {
             const ProductsTitle(
                 title: 'منتخب محصولات تانا کالا', viewAll: 'مشاهده همه'),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
+              padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
               child: AspectRatio(
-                  aspectRatio: 1.5,
+                  aspectRatio: 16/9,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     reverse: true,

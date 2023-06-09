@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tana_kala/pages/product_details.dart';
+import 'package:tana_kala/pages/store_page.dart';
 import 'package:tana_kala/theme/colors.dart';
 
 import '../models/models.dart';
@@ -18,14 +20,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const SearchBar(
-          backgroundColor: MaterialStatePropertyAll(AppColors.bgStroke),
-          elevation: MaterialStatePropertyAll(0.5),
-          padding: MaterialStatePropertyAll(EdgeInsets.fromLTRB(16, 4, 16, 4)),
-          constraints: BoxConstraints(),
-          // elevation: MaterialStatePropertyAll(0),
-          hintText: 'جستجو در تاناکالا',
-        ),
+        title: const TextField(
+          decoration: InputDecoration(border: OutlineInputBorder(borderRadius:BorderRadius.all(Radius.circular(5)) )),
+        )
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(
@@ -69,12 +66,11 @@ class _HomePageState extends State<HomePage> {
                               maxLines: 2,
                               textAlign: TextAlign.right,
                             ),
-                           
-                            Spacer(),
+                            const Spacer(),
                             Image.asset(
                               'assets/Group_4.png',
                             ),
-                            Spacer()
+                            const Spacer()
                           ],
                         ),
                         Column(
@@ -125,8 +121,8 @@ class _HomePageState extends State<HomePage> {
                 subTitle: 'بر اساس بازدید های اخیر شما'),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 8, 16),
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 2,
                 child: ListView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,
@@ -279,7 +275,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
               child: AspectRatio(
-                aspectRatio: 16/9,
+                aspectRatio: 16 / 9,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -321,7 +317,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
               child: AspectRatio(
-                aspectRatio: 16/9,
+                aspectRatio: 16 / 9,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -370,7 +366,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
               child: AspectRatio(
-                  aspectRatio: 16/9,
+                  aspectRatio: 16 / 9,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     reverse: true,
@@ -405,9 +401,13 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar:
           BottomNavigationBar(currentIndex: 3, items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-            icon: Image.asset('assets/User_Empty.png'), label: ''),
+            icon: IconButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const StorePage(),));
+            }, icon: Image.asset('assets/User_Empty.png'),), label: ''),
         BottomNavigationBarItem(
-            icon: Image.asset('assets/Shopping_Bag.png'), label: ''),
+            icon: IconButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDetails(),));
+            }, icon: Image.asset('assets/Shopping_Bag.png'),), label: ''),
         BottomNavigationBarItem(
             icon: Image.asset('assets/Search.png'), label: ''),
         BottomNavigationBarItem(

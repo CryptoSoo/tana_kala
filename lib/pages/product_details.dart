@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tana_kala/models/models.dart';
 import 'package:tana_kala/pages/store_page.dart';
 import 'package:tana_kala/theme/colors.dart';
@@ -41,13 +42,21 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
         centerTitle: true,
         leading: const Icon(Icons.favorite_border, color: Colors.black),
-        actions:  [IconButton(
-          onPressed: () {
-
-            Navigator.push(context, MaterialPageRoute(builder: (context) => StorePage(),));
-          },
-          icon: Icon(Icons.arrow_forward_sharp,color: Colors.black,),
-          )],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const StorePage(),
+                  ));
+            },
+            icon: const Icon(
+              Icons.arrow_forward_sharp,
+              color: Colors.black,
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -57,23 +66,24 @@ class _ProductDetailsState extends State<ProductDetails> {
           children: [
             AspectRatio(
               aspectRatio: 1,
-              child: SizedBox(
-                child: PageView.builder(
-                    controller: _pageController,
-                    onPageChanged: (page) {
-                      setState(() {
-                        activePage = page;
-                      });
-                    },
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: images.length,
-                    pageSnapping: true,
-                    itemBuilder: (context, pagePosition) {
-                      return Container(
-                          child: Image.asset(images[pagePosition]));
-                    }),
-              ),
+              child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (page) {
+                    setState(() {
+                      activePage = page;
+                    });
+                  },
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: images.length,
+                  pageSnapping: true,
+                  itemBuilder: (context, pagePosition) {
+                    return Container(child: Image.asset(images[pagePosition]));
+                  }),
             ),
+            // SmoothPageIndicator(
+            //     controller: _pageController,
+            //     count: 5,
+            //     effect: const JumpingDotEffect(verticalOffset: 10)),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -88,7 +98,8 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             const Padding(
                 padding: EdgeInsets.all(16),
-                child: Text('لباس مردانه / پیراهن پسرانه',style: TextStyle(color: AppColors.secondaryTextColor2))),
+                child: Text('لباس مردانه / پیراهن پسرانه',
+                    style: TextStyle(color: AppColors.secondaryTextColor2))),
             const Padding(
                 padding: EdgeInsets.all(16),
                 child: Text('پیراهن پسرانه پیانو مدل 7109-93')),
@@ -100,7 +111,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     flex: 1,
                   ),
                   const Text(
-                      '۷۷% (۳۰) نفر از خریداران این کالا را پیشنهاد کرده اند',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                      '۷۷% (۳۰) نفر از خریداران این کالا را پیشنهاد کرده اند',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                   Image.asset('assets/Like.png'),
                   const Spacer(
                     flex: 2,
@@ -109,7 +121,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const Spacer(
                     flex: 2,
                   ),
-                  const Text('۶ دیدگاه',style: TextStyle(color: Colors.blue),)
+                  const Text(
+                    '۶ دیدگاه',
+                    style: TextStyle(color: Colors.blue),
+                  )
                 ],
               ),
             ),
@@ -240,9 +255,9 @@ class _ProductDetailsState extends State<ProductDetails> {
             const Padding(
               padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Text(
-                'سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.',
-                textDirection: TextDirection.rtl,style: TextStyle(color: AppColors.secondaryTextColor2)
-              ),
+                  'سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: AppColors.secondaryTextColor2)),
             ),
             const Divider(
               thickness: 10,
@@ -261,7 +276,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('جنس',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Text('جنس',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -281,7 +297,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('طرح',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Text('طرح',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -301,7 +318,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('استایل لباس',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Text('استایل لباس',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -321,7 +339,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('نوع فاق',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Text('نوع فاق',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
@@ -341,7 +360,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Spacer(
                     flex: 1,
                   ),
-                  Text('نحوه بسته شدن',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Text('نحوه بسته شدن',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),

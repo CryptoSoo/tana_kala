@@ -44,22 +44,26 @@ class ClothCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      child: Padding(
-        padding: const EdgeInsets.all(4),
-        child: AspectRatio(
-          aspectRatio: 0.7,
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 8),
+      child: AspectRatio(
+        aspectRatio: 9 / 16,
+        child: Padding(
+          padding: const EdgeInsets.all(4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             // mainAxisSize: MainAxisSize.min,
             children: [
               AspectRatio(
-                aspectRatio: 1.5,
+                aspectRatio: 1,
                 child: Stack(
                   alignment: Alignment.topRight,
                   children: [
+                    Positioned.fill(
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: ColoredBox(color: Colors.grey.shade100))),
                     if (size != null)
                       Positioned(
                         right: 0,
@@ -77,12 +81,15 @@ class ClothCategory extends StatelessWidget {
                 ),
               ),
               // const Spacer(),
-              Text(
-                productName,
-                // maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall,
-                textDirection: TextDirection.rtl,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                child: Text(
+                  productName,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textDirection: TextDirection.rtl,
+                ),
               ),
               Row(
                 children: [
@@ -90,22 +97,27 @@ class ClothCategory extends StatelessWidget {
                   Expanded(
                       child: Text(
                     price,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
                   ))
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset('assets/Star.png'),
-                  const Text('۴.۸ '),
-                  const Text('(۲ نظر)'),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset('assets/Star.png'),
+                    const Text('۴.۸ '),
+                    const Text('(۲ نظر)'),
+                  ],
+                ),
               ),
-              if(store != null) const Divider(
-                indent: 10,
-                endIndent: 10,
-              ),
+              if (store != null)
+                const Divider(
+                  indent: 10,
+                  endIndent: 10,
+                ),
               if (store != null)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -311,7 +323,8 @@ class UserFeedBack extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(
                 children: [
-                  const Text('۲۲ تیر ۱۴۰۱',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  const Text('۲۲ تیر ۱۴۰۱',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                   const Spacer(),
                   Text(title),
                   Image.asset(rate)
@@ -326,8 +339,11 @@ class UserFeedBack extends StatelessWidget {
                   Container(
                       padding: const EdgeInsets.all(5),
                       color: Colors.grey.shade200,
-                      child: const Text('خریدار',style: TextStyle(color: AppColors.secondaryTextColor2))),
-                  const Text('علیرضا رودی',style: TextStyle(color: AppColors.secondaryTextColor2))
+                      child: const Text('خریدار',
+                          style:
+                              TextStyle(color: AppColors.secondaryTextColor2))),
+                  const Text('علیرضا رودی',
+                      style: TextStyle(color: AppColors.secondaryTextColor2))
                 ],
               ),
             ),
@@ -337,11 +353,10 @@ class UserFeedBack extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    'چیزی تو عکس بود نبود واقعا کمر اندازه ولی مابقیش خعلی گشاد',
-                    maxLines: 2,
-                    textScaleFactor: 0.7,
-                    style: TextStyle(color: AppColors.secondaryTextColor)
-                  ),
+                      'چیزی تو عکس بود نبود واقعا کمر اندازه ولی مابقیش خعلی گشاد',
+                      maxLines: 2,
+                      textScaleFactor: 0.7,
+                      style: TextStyle(color: AppColors.secondaryTextColor)),
                 ],
               ),
             ),
@@ -357,11 +372,13 @@ class UserFeedBack extends StatelessWidget {
                   Spacer(
                     flex: 3,
                   ),
-                  Text('سایز: ۳۴',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Text('سایز: ۳۴',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                   Spacer(
                     flex: 1,
                   ),
-                  Text('فروشنده: فروشگاه پنو',style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Text('فروشنده: فروشگاه پنو',
+                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),

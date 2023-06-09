@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:tana_kala/models/models.dart';
+import 'package:tana_kala/widgets/widgets.dart';
 import 'package:tana_kala/pages/store_page.dart';
 import 'package:tana_kala/theme/colors.dart';
 

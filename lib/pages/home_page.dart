@@ -3,7 +3,7 @@ import 'package:tana_kala/pages/product_details.dart';
 import 'package:tana_kala/pages/store_page.dart';
 import 'package:tana_kala/theme/colors.dart';
 
-import '../models/models.dart';
+import '../widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,8 +24,8 @@ class _HomePageState extends State<HomePage> {
         decoration: InputDecoration(
             filled: true,
             fillColor: AppColors.bgStroke,
-            enabledBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white)),
             label: RichText(
               text: const TextSpan(
                 style: TextStyle(shadows: [
@@ -125,8 +125,8 @@ class _HomePageState extends State<HomePage> {
                 title: 'دسته بندی های منتخب', viewAll: 'مشاهده همه'),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 16, 8),
-              child: Container(
-                height: kBottomNavigationBarHeight,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 12,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   reverse: true,
@@ -140,10 +140,9 @@ class _HomePageState extends State<HomePage> {
                         text: 'لباس مردانه', image: 'assets/image_1381.png'),
                     FavList(
                         text: 'لباس بچه گانه', image: 'assets/image_1382.png'),
+                    FavList(text: 'لباس زنانه', image: 'assets/image_1380.png'),
                     FavList(
-                        text: 'لباس بچه گانه', image: 'assets/image_1383.png'),
-                    FavList(
-                        text: 'لباس بچه گانه', image: 'assets/image_1383.png'),
+                        text: 'لباس مردانه', image: 'assets/image_1381.png'),
                     FavList(
                         text: 'لباس بچه گانه', image: 'assets/image_1383.png'),
                   ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tana_kala/models/models.dart';
+import 'package:tana_kala/widgets/widgets.dart';
 import 'package:tana_kala/theme/colors.dart';
 
 class StorePage extends StatelessWidget {

@@ -13,15 +13,19 @@ class FavList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          text,
-        ),
-        Image.asset(image),
-      ],
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      color: AppColors.bgStroke,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            text,
+          ),
+          Image.asset(image),
+        ],
+      ),
     );
   }
 }
@@ -68,8 +72,15 @@ class ClothCategory extends StatelessWidget {
                       Positioned(
                         right: 0,
                         top: 0,
-                        child: Container(
-                            color: const Color(0xDEE2EE), child: Text(size!)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(12),
+                              topRight: Radius.circular(12)),
+                          child: Container(
+                              padding: EdgeInsets.all(5),
+                              color: AppColors.bgDisabled,
+                              child: Text(size!)),
+                        ),
                       ),
                     Positioned.fill(
                       child: Image.asset(

@@ -45,7 +45,7 @@ class ClothCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       child: AspectRatio(
         aspectRatio: 9 / 16,
         child: Padding(
@@ -97,7 +97,10 @@ class ClothCategory extends StatelessWidget {
                   Expanded(
                       child: Text(
                     price,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleSmall
+                        ?.copyWith(fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
                   ))
                 ],

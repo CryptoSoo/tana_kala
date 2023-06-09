@@ -3,7 +3,8 @@ import 'package:tana_kala/theme/colors.dart';
 
 ThemeData appTheme() {
   return ThemeData(
-    inputDecorationTheme: InputDecorationTheme(border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+    inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
     fontFamily: 'Peyda',
     textTheme: const TextTheme(
         // headlineLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w900)

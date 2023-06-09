@@ -20,10 +20,45 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const TextField(
-          decoration: InputDecoration(border: OutlineInputBorder(borderRadius:BorderRadius.all(Radius.circular(5)) )),
-        )
-      ),
+          title: TextField(
+        decoration: InputDecoration(
+            filled: true,
+            fillColor: AppColors.bgStroke,
+            enabledBorder:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            label: RichText(
+              text: const TextSpan(
+                style: TextStyle(shadows: [
+                  Shadow(
+                      color: Colors.black12,
+                      offset: Offset(0, 3),
+                      blurRadius: 1)
+                ]),
+                children: [
+                  TextSpan(
+                      text: 'جستوجو در',
+                      style: TextStyle(
+                          fontSize: 12, color: AppColors.disabledTextColor)),
+                  TextSpan(
+                      text: '  تـانـا',
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w900)),
+                  TextSpan(
+                      text: 'کالا',
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0x99161A1F),
+                          fontWeight: FontWeight.w900)),
+                ],
+              ),
+            ),
+            suffixIcon: Image.asset('assets/Search.png',
+                color: AppColors.disabledTextColor),
+            border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(9)))),
+      )),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics()),
@@ -401,13 +436,29 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar:
           BottomNavigationBar(currentIndex: 3, items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-            icon: IconButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const StorePage(),));
-            }, icon: Image.asset('assets/User_Empty.png'),), label: ''),
+            icon: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const StorePage(),
+                    ));
+              },
+              icon: Image.asset('assets/User_Empty.png'),
+            ),
+            label: ''),
         BottomNavigationBarItem(
-            icon: IconButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDetails(),));
-            }, icon: Image.asset('assets/Shopping_Bag.png'),), label: ''),
+            icon: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProductDetails(),
+                    ));
+              },
+              icon: Image.asset('assets/Shopping_Bag.png'),
+            ),
+            label: ''),
         BottomNavigationBarItem(
             icon: Image.asset('assets/Search.png'), label: ''),
         BottomNavigationBarItem(

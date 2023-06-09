@@ -16,6 +16,6 @@ class MainApp extends StatelessWidget {
         title: 'تانا کالا',
         locale: const Locale('fa', 'IR'),
         theme: appTheme(),
-        home:  const HomePage());
+        home: const HomePage());
   }
 }

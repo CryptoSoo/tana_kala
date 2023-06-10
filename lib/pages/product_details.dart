@@ -37,24 +37,24 @@ class _ProductDetailsState extends State<ProductDetails> {
         backgroundColor: Colors.white,
         title: const Text(
           'پیراهن پسرانه پیانو مدل 7109-93',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontSize: 12),
         ),
         centerTitle: true,
-        leading: const Icon(Icons.favorite_border, color: Colors.black),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const StorePage(),
-                  ));
-            },
-            icon: const Icon(
-              Icons.arrow_forward_sharp,
-              color: Colors.black,
-            ),
-          )
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StorePage(),
+                ));
+          },
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.black,
+          ),
+        ),
+        actions: const [
+          Icon(Icons.favorite_border, color: Colors.black),
         ],
       ),
       body: SingleChildScrollView(
@@ -88,10 +88,11 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('assets/Group34623.png'),
-                  const Text('۴.۵'),
-                  const Spacer(),
+                  
                   Image.asset('assets/Frame33773.png'),
+                  const Spacer(),
+                  const Text('۴.۵'),
+                  Image.asset('assets/Group34623.png'),
                 ],
               ),
             ),
@@ -374,7 +375,6 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: AspectRatio(
                 aspectRatio: 16 / 9,
                 child: ListView(
-                  reverse: true,
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
                   children: const [

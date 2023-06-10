@@ -14,21 +14,37 @@ class FavList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      color: AppColors.bgStroke,
+      decoration: BoxDecoration(
+          color: AppColors.bgStroke, borderRadius: BorderRadius.circular(10)),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxihsAlignment.spaceBetween,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Padding(
+            padding: const EdgeInsetsDirectional.only(end: 8),
+            child: Image.asset(image),
+          ),
           Text(
             text,
           ),
-          Image.asset(image),
         ],
       ),
     );
   }
 }
+
+List<FavList> favCloth = [
+  const FavList(
+    image: 'assets/image_1380.png',
+    text: 'لباس زنانه',
+  ),
+  const FavList(text: 'لباس مردانه', image: 'assets/image_1381.png'),
+  const FavList(text: 'لباس بچه گانه', image: 'assets/image_1382.png'),
+  const FavList(text: 'لباس زنانه', image: 'assets/image_1380.png'),
+  const FavList(text: 'لباس مردانه', image: 'assets/image_1381.png'),
+  const FavList(text: 'لباس بچه گانه', image: 'assets/image_1383.png'),
+];
 
 class ClothCategory extends StatelessWidget {
   final String? size;
@@ -48,123 +64,154 @@ class ClothCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: AspectRatio(
-        aspectRatio: 9 / 16,
-        child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            // mainAxisSize: MainAxisSize.min,
-            children: [
-              AspectRatio(
-                aspectRatio: 1,
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    Positioned.fill(
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: ColoredBox(color: Colors.grey.shade100))),
-                    if (size != null)
-                      Positioned(
-                        right: 0,
-                        top: 0,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(12),
-                              topRight: Radius.circular(12)),
-                          child: Container(
-                              padding: EdgeInsets.all(5),
-                              color: AppColors.bgDisabled,
-                              child: Text(size!)),
-                        ),
-                      ),
-                    Positioned.fill(
-                      child: Image.asset(
-                        image,
-                        fit: BoxFit.contain,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              // const Spacer(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                child: Text(
-                  productName,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textDirection: TextDirection.rtl,
-                ),
-              ),
-              Row(
+    return AspectRatio(
+      aspectRatio: 9 / 16,
+      child: Padding(
+        padding: const EdgeInsets.all(4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          // mainAxisSize: MainAxisSize.min,
+          children: [
+            AspectRatio(
+              aspectRatio: 1,
+              child: Stack(
+                alignment: Alignment.topRight,
                 children: [
-                  Image.asset('assets/toman.png'),
-                  Expanded(
-                      child: Text(
-                    price,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
-                  ))
+                  Positioned.fill(
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: ColoredBox(color: Colors.grey.shade100))),
+                  if (size != null)
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            topRight: Radius.circular(12)),
+                        child: Container(
+                            padding: const EdgeInsets.all(5),
+                            color: AppColors.bgDisabled,
+                            child: Text(size!)),
+                      ),
+                    ),
+                  Positioned.fill(
+                    child: Image.asset(
+                      image,
+                      fit: BoxFit.contain,
+                    ),
+                  )
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/Star.png'),
-                    const Text('۴.۸ '),
-                    const Text('(۲ نظر)'),
-                  ],
-                ),
+            ),
+            // const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+              child: Text(
+                productName,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textDirection: TextDirection.rtl,
               ),
-              if (store != null)
-                const Divider(
-                  indent: 10,
-                  endIndent: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  price,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
                 ),
-              if (store != null)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Flexible(
-                        child: Text(
-                      store!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textDirection: TextDirection.rtl,
-                    )),
-                    const Text(
-                      ':فروشنده',
-                      style: TextStyle(color: AppColors.secondaryTextColor2),
-                    )
-                  ],
-                )
-            ],
-          ),
+                Image.asset('assets/toman.png'),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Text('(۲ نظر)'),
+                  const Text('۴.۸ '),
+                  Image.asset('assets/Star.png'),
+                ],
+              ),
+            ),
+            if (store != null)
+              const Divider(
+                indent: 10,
+                endIndent: 10,
+              ),
+            if (store != null)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Text(
+                    'فروشنده: ',
+                    style: TextStyle(color: AppColors.secondaryTextColor2),
+                  ),
+                  Flexible(
+                      child: Text(
+                    store!,
+                    overflow: TextOverflow.ellipsis,
+                  )),
+                ],
+              )
+          ],
         ),
       ),
     );
   }
 }
 
+List<ClothCategory> catList = [
+  const ClothCategory(
+    image: 'assets/image_16.png',
+    price: '۲,۲۶۳,۰۰۰',
+    productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+    size: 'تک سایز',
+    store: 'فروشگاه اصلی ترناو',
+  ),
+  const ClothCategory(
+    image: 'assets/image_18.png',
+    price: '۲,۲۶۳,۰۰۰',
+    productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+    size: 'تک سایز',
+    store: 'فروشگاه اصلی ترناو',
+  ),
+  const ClothCategory(
+    image: 'assets/image_16.png',
+    price: '۲,۲۶۳,۰۰۰',
+    productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+    size: 'تک سایز',
+    store: 'فروشگاه اصلی ترناو',
+  ),
+  const ClothCategory(
+    image: 'assets/image_18.png',
+    price: '۲,۲۶۳,۰۰۰',
+    productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+    size: 'تک سایز',
+    store: 'فروشگاه اصلی ترناو',
+  ),
+  const ClothCategory(
+    image: 'assets/image_16.png',
+    price: '۲,۲۶۳,۰۰۰',
+    productName: 'پیراهن پسرانه پیانو مدل 7109-93',
+    size: 'تک سایز',
+    store: 'فروشگاه اصلی ترناو',
+  ),
+];
+
 class FavBrands extends StatelessWidget {
   final String image;
-  final String brandName;
 
   const FavBrands({
     super.key,
     required this.image,
-    required this.brandName,
   });
 
   @override
@@ -172,10 +219,31 @@ class FavBrands extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [Image.asset(image), const Spacer(), Text(brandName)],
+      children: [
+        Image.asset(image),
+        const Spacer(),
+      ],
     );
   }
 }
+
+List<FavBrands> favList = [
+  const FavBrands(
+    image: 'assets/hermes.png',
+  ),
+  const FavBrands(
+    image: 'assets/chanel.png',
+  ),
+  const FavBrands(
+    image: 'assets/lv.png',
+  ),
+  const FavBrands(
+    image: 'assets/gucci.png',
+  ),
+  const FavBrands(
+    image: 'assets/zara.png',
+  ),
+];
 
 class ProductsTitle extends StatelessWidget {
   final String title;
@@ -187,14 +255,26 @@ class ProductsTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.arrow_back_sharp,
-            color: AppColors.secondaryTextColor2,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(fontSize: 17),
+                ),
+                if (subTitle != null)
+                  Text(subTitle!,
+                      style: const TextStyle(
+                          fontSize: 6, color: AppColors.secondaryTextColor2))
+              ],
+            ),
           ),
           Row(
             children: [
@@ -208,21 +288,9 @@ class ProductsTitle extends StatelessWidget {
               )
             ],
           ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(fontSize: 22),
-                ),
-                if (subTitle != null)
-                  Text(subTitle!,
-                      style: const TextStyle(
-                          fontSize: 12, color: AppColors.secondaryTextColor2))
-              ],
-            ),
+          const Icon(
+            Icons.arrow_forward_sharp,
+            color: AppColors.secondaryTextColor2,
           ),
         ],
       ),
@@ -246,39 +314,53 @@ class BestStores extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        AspectRatio(
-          aspectRatio: 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Image.asset(storeImage),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset('assets/Frame33540.png'),
-                  Row(
-                    children: [
-                      Text(storeName),
-                      Image.asset(storeLogo),
-                    ],
-                  ),
-                ],
-              ),
-              Text(storeCategory,
-                  style: const TextStyle(
-                      color: AppColors.secondaryTextColor2, fontSize: 12),
-                  textDirection: TextDirection.rtl),
-            ],
-          ),
+        Image.asset(storeImage),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(storeLogo),
+                const SizedBox(width: 5),
+                Text(storeName),
+              ],
+            ),
+            Image.asset('assets/Frame33540.png'),
+          ],
+        ),
+        Text(
+          storeCategory,
+          style: const TextStyle(
+              color: AppColors.secondaryTextColor2, fontSize: 8),
         ),
       ],
     );
   }
 }
+
+List<BestStores> bestStoresList = [
+  const BestStores(
+    storeCategory: 'کیف و کفش، لباس زنانه، لباس بچگانه، شال و روسری',
+    storeImage: 'assets/Rectangle9063.png',
+    storeLogo: 'assets/Ellipse7.png',
+    storeName: 'فروشگاه کارل',
+  ),
+  const BestStores(
+      storeImage: 'assets/Rectangle9064.png',
+      storeLogo: 'assets/Ellipse8.png',
+      storeName: 'فروشگاه کارل',
+      storeCategory: 'کیف و کفش، لباس زنانه، لباس بچگانه، شال و روسری'),
+  const BestStores(
+      storeImage: 'assets/Rectangle9065.png',
+      storeLogo: 'assets/Ellipse9.png',
+      storeName: 'فروشگاه کارل',
+      storeCategory: 'کیف و کفش، لباس زنانه، لباس بچگانه، شال و روسری')
+];
 
 class SellerDetails extends StatelessWidget {
   final String text;
@@ -415,3 +497,43 @@ class UserFeedBack extends StatelessWidget {
     );
   }
 }
+
+class Banners extends StatelessWidget {
+  final String image;
+  const Banners({
+    super.key,
+    required this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Image.asset(image),
+      ),
+    );
+  }
+}
+
+List<ClothCategory> bagsList = [ const ClothCategory(
+                        image: 'assets/bag1.png',
+                        productName: 'کیف زنانه مدل خاکستری',
+                        price: '۲,۲۶۳,۰۰۰',
+                        store: 'فروشگاه اصلی ترناو'),
+                    const ClothCategory(
+                        image: 'assets/bag2.png',
+                        productName: 'کیف زنانه مدل خاکستری',
+                        price: '۲,۲۶۳,۰۰۰',
+                        store: 'فروشگاه اصلی ترناو'),
+                    const ClothCategory(
+                        image: 'assets/bag1.png',
+                        productName: 'کیف زنانه مدل خاکستری',
+                        price: '۲,۲۶۳,۰۰۰',
+                        store: 'فروشگاه اصلی ترناو'),
+                    const ClothCategory(
+                        image: 'assets/bag2.png',
+                        productName: 'کیف زنانه مدل خاکستری',
+                        price: '۲,۲۶۳,۰۰۰',
+                        store: 'فروشگاه اصلی ترناو'),];

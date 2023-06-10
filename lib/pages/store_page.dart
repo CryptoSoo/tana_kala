@@ -36,28 +36,27 @@ class StorePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.favorite_border),
                   Text(
                     'فروشگاه پنو',
                     style: TextStyle(fontSize: 24),
                   ),
+                  Icon(Icons.favorite_border),
                 ],
               ),
             ),
             const Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text('مشهد بلوار سرافرازان، سرافرازان 14'),
-                    Text(
-                      'آدرس',
-                      style: TextStyle(color: AppColors.secondaryTextColor2),
-                    ),
                     Icon(
                       Icons.location_on_outlined,
                       color: AppColors.secondaryTextColor2,
                     ),
+                    Text(
+                      'آدرس',
+                      style: TextStyle(color: AppColors.secondaryTextColor2),
+                    ),
+                    Text('مشهد بلوار سرافرازان، سرافرازان 14'),
                   ],
                 )),
             Padding(
@@ -68,14 +67,14 @@ class StorePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text('روش ارسال',
-                            style: TextStyle(
-                                color: AppColors.secondaryTextColor2)),
-                        Text('پست ، تیپاکس'),
+                        Image.asset('assets/greenrate.png'),
+                        const Text('بر اساس 25 خرید ',
+                            style:
+                                TextStyle(color: AppColors.secondaryTextColor2))
                       ],
                     ),
                     const VerticalDivider(
@@ -96,14 +95,14 @@ class StorePage extends StatelessWidget {
                       endIndent: 30,
                       indent: 30,
                     ),
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.asset('assets/greenrate.png'),
-                        const Text('بر اساس 25 خرید ',
-                            style:
-                                TextStyle(color: AppColors.secondaryTextColor2))
+                        Text('روش ارسال',
+                            style: TextStyle(
+                                color: AppColors.secondaryTextColor2)),
+                        Text('پست ، تیپاکس'),
                       ],
                     ),
                   ],
@@ -114,66 +113,82 @@ class StorePage extends StatelessWidget {
               endIndent: 30,
               indent: 30,
             ),
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: SearchBar(
-                hintText: 'جستجو در میان لیست محصولات',
-                leading: Icon(Icons.search_sharp),
-              ),
-            ),
+            Padding(
+                padding: const EdgeInsets.all(16),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: AppColors.bgDisabled,
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(16))),
+                    label: RichText(
+                      text: const TextSpan(
+                        children: [
+                          TextSpan(
+                              text: ' جستجو در میان لیست محصولات',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.secondaryTextColor)),
+                        ],
+                      ),
+                    ),
+                    prefixIcon: Image.asset('assets/Search.png',
+                        color: AppColors.disabledTextColor),
+                  ),
+                )),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: [
-                      Column(
-                        children: [
-                          const Row(
-                            children: [
-                              Text('مرتب سازی بر اساس',
-                                  style: TextStyle(
-                                      color: AppColors.secondaryTextColor2)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Image.asset('assets/arrow.png'),
-                              const Text('جدیدترین')
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [Image.asset('assets/menu.png')],
-                      ),
-                    ],
-                  ),
-                  Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('فیلتر'),
-                      const SizedBox(width: 10),
                       Image.asset('assets/filter.png'),
+                      const SizedBox(width: 10),
+                      const Text('فیلتر'),
+                    ],
+                  ),
+                  const Spacer(),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [Image.asset('assets/menu.png')],
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Column(
+                    children: [
+                      const Row(
+                        children: [
+                          Text('مرتب سازی بر اساس',
+                              style: TextStyle(
+                                  color: AppColors.secondaryTextColor2)),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Text('جدیدترین'),
+                          Image.asset('assets/arrow.png'),
+                        ],
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-            Card(
-              margin: const EdgeInsets.all(16),
-              child: AspectRatio(
-                aspectRatio: 0.9,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 2,
                 child: GridView(
+                  
                   physics: const BouncingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 0.618,
                       crossAxisCount: 2),
                   scrollDirection: Axis.vertical,
                   children: const [

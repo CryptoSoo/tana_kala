@@ -376,13 +376,17 @@ class SellerDetails extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(text),
+          Image.asset(image),
           const SizedBox(
             width: 10,
           ),
-          Image.asset(image)
+          Text(text,
+              style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.secondaryTextColor)),
         ],
       ),
     );
@@ -408,51 +412,74 @@ class UserFeedBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1.5,
+      aspectRatio: 1,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
             border: Border.all(width: 1, color: Colors.grey.shade200)),
         child: Column(
+          
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(
                 children: [
-                  const Text('۲۲ تیر ۱۴۰۱',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Image.asset(
+                    rate,
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.w700),
+                  ),
                   const Spacer(),
-                  Text(title),
-                  Image.asset(rate)
+                  const Text('۲۲ تیر ۱۴۰۱',
+                      style: TextStyle(
+                          color: AppColors.secondaryTextColor2,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w300)),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                      padding: const EdgeInsets.all(5),
-                      color: Colors.grey.shade200,
-                      child: const Text('خریدار',
-                          style:
-                              TextStyle(color: AppColors.secondaryTextColor2))),
                   const Text('علیرضا رودی',
-                      style: TextStyle(color: AppColors.secondaryTextColor2))
+                      style: TextStyle(
+                          color: AppColors.secondaryTextColor2,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w500)),
+                  Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(5)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 5),
+                      child: const Text('خریدار',
+                          style: TextStyle(
+                              color: AppColors.secondaryTextColor2,
+                              fontSize: 9,
+                              fontWeight: FontWeight.w300))),
                 ],
               ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                       'چیزی تو عکس بود نبود واقعا کمر اندازه ولی مابقیش خعلی گشاد',
                       maxLines: 2,
                       textScaleFactor: 0.7,
-                      style: TextStyle(color: AppColors.secondaryTextColor)),
+                      style: TextStyle(
+                          color: AppColors.secondaryTextColor,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w300)),
                 ],
               ),
             ),
@@ -463,31 +490,38 @@ class UserFeedBack extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Spacer(
+                  Expanded(
                     flex: 3,
+                    child: Text('فروشنده: فروشگاه پنو',
+                        style: TextStyle(
+                            color: AppColors.secondaryTextColor2,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w500)),
                   ),
-                  Text('سایز: ۳۴',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
-                  Spacer(
-                    flex: 1,
+                  Expanded(
+                    flex: 2,
+                    child: Text('سایز: ۳۴',
+                        style: TextStyle(
+                            color: AppColors.secondaryTextColor2,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w500)),
                   ),
-                  Text('فروشنده: فروشگاه پنو',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Image.asset(likeOrDisLike),
                   Text(
                     feedBack,
-                    style: TextStyle(color: color),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w300),
                   ),
-                  Image.asset(likeOrDisLike)
                 ],
               ),
             )
@@ -517,23 +551,25 @@ class Banners extends StatelessWidget {
   }
 }
 
-List<ClothCategory> bagsList = [ const ClothCategory(
-                        image: 'assets/bag1.png',
-                        productName: 'کیف زنانه مدل خاکستری',
-                        price: '۲,۲۶۳,۰۰۰',
-                        store: 'فروشگاه اصلی ترناو'),
-                    const ClothCategory(
-                        image: 'assets/bag2.png',
-                        productName: 'کیف زنانه مدل خاکستری',
-                        price: '۲,۲۶۳,۰۰۰',
-                        store: 'فروشگاه اصلی ترناو'),
-                    const ClothCategory(
-                        image: 'assets/bag1.png',
-                        productName: 'کیف زنانه مدل خاکستری',
-                        price: '۲,۲۶۳,۰۰۰',
-                        store: 'فروشگاه اصلی ترناو'),
-                    const ClothCategory(
-                        image: 'assets/bag2.png',
-                        productName: 'کیف زنانه مدل خاکستری',
-                        price: '۲,۲۶۳,۰۰۰',
-                        store: 'فروشگاه اصلی ترناو'),];
+List<ClothCategory> bagsList = [
+  const ClothCategory(
+      image: 'assets/bag1.png',
+      productName: 'کیف زنانه مدل خاکستری',
+      price: '۲,۲۶۳,۰۰۰',
+      store: 'فروشگاه اصلی ترناو'),
+  const ClothCategory(
+      image: 'assets/bag2.png',
+      productName: 'کیف زنانه مدل خاکستری',
+      price: '۲,۲۶۳,۰۰۰',
+      store: 'فروشگاه اصلی ترناو'),
+  const ClothCategory(
+      image: 'assets/bag1.png',
+      productName: 'کیف زنانه مدل خاکستری',
+      price: '۲,۲۶۳,۰۰۰',
+      store: 'فروشگاه اصلی ترناو'),
+  const ClothCategory(
+      image: 'assets/bag2.png',
+      productName: 'کیف زنانه مدل خاکستری',
+      price: '۲,۲۶۳,۰۰۰',
+      store: 'فروشگاه اصلی ترناو'),
+];

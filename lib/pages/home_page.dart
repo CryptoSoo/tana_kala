@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:tana_kala/pages/product_details.dart';
@@ -221,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   separatorBuilder: (context, index) {
-                    return SizedBox(width: 5);
+                    return const SizedBox(width: 5);
                   },
                 ),
               ),

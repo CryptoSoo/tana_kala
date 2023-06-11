@@ -61,7 +61,8 @@ class _ProductDetailsState extends State<ProductDetails> {
         scrollDirection: Axis.vertical,
         physics: const BouncingScrollPhysics(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             AspectRatio(
               aspectRatio: 1,
@@ -88,7 +89,6 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  
                   Image.asset('assets/Frame33773.png'),
                   const Spacer(),
                   const Text('۴.۵'),
@@ -102,45 +102,53 @@ class _ProductDetailsState extends State<ProductDetails> {
                     style: TextStyle(color: AppColors.secondaryTextColor2))),
             const Padding(
                 padding: EdgeInsets.all(16),
-                child: Text('پیراهن پسرانه پیانو مدل 7109-93')),
+                child: Text(
+                  'پیراهن پسرانه پیانو مدل 7109-93',
+                  style: TextStyle(fontSize: 21, fontWeight: FontWeight.w700),
+                )),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
                 children: [
+                  const Text(
+                    '۶ دیدگاه',
+                    style: TextStyle(color: Colors.blue, fontSize: 12),
+                  ),
                   const Spacer(
                     flex: 1,
                   ),
-                  const Text(
-                      '۷۷% (۳۰) نفر از خریداران این کالا را پیشنهاد کرده اند',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
-                  Image.asset('assets/Like.png'),
-                  const Spacer(
-                    flex: 2,
-                  ),
                   const Text('.'),
                   const Spacer(
-                    flex: 2,
+                    flex: 1,
                   ),
+                  Image.asset('assets/Like.png'),
                   const Text(
-                    '۶ دیدگاه',
-                    style: TextStyle(color: Colors.blue),
-                  )
+                      '۷۷% (۳۰) نفر از خریداران این کالا را پیشنهاد کرده اند',
+                      style: TextStyle(
+                          color: AppColors.secondaryTextColor2, fontSize: 11)),
+                  const Spacer(
+                    flex: 4,
+                  ),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [Image.asset('assets/2.263.000.png')],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Image.asset('assets/Group33499.png'),
+                  const Text('2.263.000',
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.w700)),
                   Image.asset('assets/toman.png'),
-                  const Text('2.263.000'),
-                  Image.asset('assets/Group33499.png')
                 ],
               ),
             ),
@@ -152,18 +160,19 @@ class _ProductDetailsState extends State<ProductDetails> {
               padding: EdgeInsets.all(16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Text('رنگ:',
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                     child: ChoiceChip(
-                      label: Text('سفید'),
-                      selected: false,
-                      labelPadding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-                      disabledColor: AppColors.primaryColor,
-                      autofocus: true,
-                    ),
+                        label: Text('آبی'),
+                        selected: false,
+                        labelPadding:
+                            EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+                        disabledColor: Colors.white),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
@@ -177,13 +186,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                     child: ChoiceChip(
-                        label: Text('آبی'),
-                        selected: false,
-                        labelPadding:
-                            EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-                        disabledColor: Colors.white),
+                      label: Text('سفید'),
+                      selected: false,
+                      labelPadding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+                      disabledColor: AppColors.primaryColor,
+                      autofocus: true,
+                    ),
                   ),
-                  Text(':رنگ'),
                 ],
               ),
             ),
@@ -193,17 +203,20 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             const Padding(
               padding: EdgeInsets.all(16),
-              child: Text('سایز'),
+              child: Text(
+                'سایز',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+              ),
             ),
             const Padding(
               padding: EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                     child: ChoiceChip(
-                        label: Text('36'),
+                        label: Text('34'),
                         selected: false,
                         labelPadding:
                             EdgeInsets.symmetric(horizontal: 30, vertical: 8),
@@ -267,17 +280,23 @@ class _ProductDetailsState extends State<ProductDetails> {
             const Padding(
               padding: EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Spacer(
+                  Expanded(
                     flex: 2,
+                    child: Text('جنس',
+                        style: TextStyle(
+                            color: AppColors.secondaryTextColor2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300)),
                   ),
-                  Text('جین'),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text('جنس',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Expanded(
+                      flex: 3,
+                      child: Text(
+                        'جین',
+                        style: TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.w300),
+                      )),
                 ],
               ),
             ),
@@ -288,17 +307,21 @@ class _ProductDetailsState extends State<ProductDetails> {
             const Padding(
               padding: EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Spacer(
+                  Expanded(
                     flex: 2,
+                    child: Text('طرح',
+                        style: TextStyle(
+                            color: AppColors.secondaryTextColor2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300)),
                   ),
-                  Text('ساده'),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text('طرح',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Expanded(
+                      flex: 3,
+                      child: Text('ساده',
+                          style: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.w300))),
                 ],
               ),
             ),
@@ -309,17 +332,20 @@ class _ProductDetailsState extends State<ProductDetails> {
             const Padding(
               padding: EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Spacer(
+                  Expanded(
                     flex: 2,
+                    child: Text('استایل لباس',
+                        style: TextStyle(
+                            color: AppColors.secondaryTextColor2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300)),
                   ),
-                  Text('مام استایل'),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text('استایل لباس',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Expanded(
+                      flex: 3,
+                      child: Text('مام استایل',
+                          style: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.w300))),
                 ],
               ),
             ),
@@ -330,17 +356,21 @@ class _ProductDetailsState extends State<ProductDetails> {
             const Padding(
               padding: EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Spacer(
+                  Expanded(
                     flex: 2,
+                    child: Text('نوع فاق',
+                        style: TextStyle(
+                            color: AppColors.secondaryTextColor2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300)),
                   ),
-                  Text('متوسط'),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text('نوع فاق',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Expanded(
+                      flex: 3,
+                      child: Text('متوسط',
+                          style: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.w300))),
                 ],
               ),
             ),
@@ -351,17 +381,21 @@ class _ProductDetailsState extends State<ProductDetails> {
             const Padding(
               padding: EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Spacer(
+                  Expanded(
                     flex: 2,
+                    child: Text('نحوه بسته شدن',
+                        style: TextStyle(
+                            color: AppColors.secondaryTextColor2,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300)),
                   ),
-                  Text('دکمه'),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text('نحوه بسته شدن',
-                      style: TextStyle(color: AppColors.secondaryTextColor2)),
+                  Expanded(
+                      flex: 3,
+                      child: Text('دکمه',
+                          style: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.w300))),
                 ],
               ),
             ),
@@ -385,6 +419,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                       rate: 'assets/red_one.png',
                       title: 'راضی نبودم',
                     ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     UserFeedBack(
                         title: 'فوق الاده خوش فرم و راحت',
                         rate: 'assets/green_five.png',
@@ -405,9 +442,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(Icons.chevron_left),
                   SellerDetails(
                       text: 'ثبت دیدگاه', image: 'assets/Chat_Circle_Add.png'),
+                  Icon(Icons.chevron_right),
                 ],
               ),
             ),
@@ -420,9 +457,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(Icons.chevron_left),
                   SellerDetails(
                       text: 'پرسش و پاسخ', image: 'assets/Chat_Chats.png'),
+                  Icon(Icons.chevron_right),
                 ],
               ),
             ),
@@ -435,10 +472,9 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 8, 16),
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 2,
                 child: ListView(
-                  reverse: true,
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
                   children: const [
@@ -483,30 +519,10 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             BottomAppBar(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Row(
-                            children: [Image.asset('assets/2.263.000.png')],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Row(
-                            children: [
-                              Image.asset('assets/toman.png'),
-                              const Text('2.263.000'),
-                              Image.asset('assets/Group33499.png')
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
                     ElevatedButton(
                         style: const ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(
@@ -518,6 +534,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                             Image.asset('assets/Shopping_Cart_Add.png')
                           ],
                         )),
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Row(
+                            children: [Image.asset('assets/2.263.000.png')],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Row(
+                            children: [
+                              Image.asset('assets/Group33499.png'),
+                              const Text('2.263.000',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w700),),
+                              Image.asset('assets/toman.png'),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
